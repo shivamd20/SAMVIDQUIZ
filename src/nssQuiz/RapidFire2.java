@@ -51,6 +51,8 @@ public class RapidFire2 extends JFrame {
 	 static int  SKIP_DEDUCTION;
 	 static int NO_OF_SET;
 	 static int set; 
+	 int questionno=1;
+	 
 	JPanel panel_10;
 
 	JLabel namelbl = new JLabel("Player Name:");
@@ -83,7 +85,7 @@ public class RapidFire2 extends JFrame {
 	JLabel logoLabel = new JLabel("");
 	JLabel correct_Answer_label ;
 	 JPanel previousQustionPanel;
-	 JLabel questionStatus[]=new JLabel[100];
+	 JLabel questionStatus[]=new JLabel[1000];
 	 JLabel wrong_Answer_Label;
 	   JLabel questionSkippedLabel ;
 	
@@ -177,7 +179,7 @@ public class RapidFire2 extends JFrame {
 		optALabel.addMouseListener(optClick);
 		optALabel.setForeground(Color.BLACK);
 		optALabel.setHorizontalAlignment(SwingConstants.CENTER);
-		optALabel.setFont(new Font("Dialog", Font.BOLD, 29));
+		optALabel.setFont(new Font("Dialog", Font.BOLD, 13));
 		optALabel.setBackground(Color.GRAY);
 		optApanel.add(optALabel);
 
@@ -190,7 +192,7 @@ public class RapidFire2 extends JFrame {
 		optBLabel.addMouseListener(optClick);
 		optBLabel.setForeground(Color.BLACK);
 		optBLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		optBLabel.setFont(new Font("Dialog", Font.BOLD, 29));
+		optBLabel.setFont(new Font("Dialog", Font.BOLD, 13));
 		optBpanel.add(optBLabel);
 
 		 optCpanel = new JPanel();
@@ -202,7 +204,7 @@ public class RapidFire2 extends JFrame {
 		optCLabel.addMouseListener(optClick);
 		optCLabel.setForeground(Color.BLACK);
 		optCLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		optCLabel.setFont(new Font("Dialog", Font.BOLD, 29));
+		optCLabel.setFont(new Font("Dialog", Font.BOLD, 13));
 		optCpanel.add(optCLabel);
 
 		 optDpanel = new JPanel();
@@ -214,7 +216,7 @@ public class RapidFire2 extends JFrame {
 		optDLabel.addMouseListener(optClick);
 		optDLabel.setForeground(Color.BLACK);
 		optDLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		optDLabel.setFont(new Font("Dialog", Font.BOLD, 29));
+		optDLabel.setFont(new Font("Dialog", Font.BOLD, 13));
 		optDpanel.add(optDLabel);
 
 		JMenuBar menuBar = new JMenuBar();
@@ -446,19 +448,21 @@ public class RapidFire2 extends JFrame {
 			ps.setInt(1, qcount);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				System.out.println(rs.getString(2));
+				System.out.println(rs.getString(1));
 				optALabel.setText("A: " + rs.getString(3));
 				optBLabel.setText("B: " + rs.getString(4));
 				optCLabel.setText("C: " + rs.getString(5));
 				optDLabel.setText("D: " + rs.getString(6));
-				textPane.setText((qcount-NO_OF_SET) + ": " + rs.getString(2));
+				textPane.setText(questionno + ": " + rs.getString(2));
 				ans = rs.getString(7);
+				questionno++;
 				// getQuestion();
 			}
 			else
 			{
-				qcount=1;
-				getQuestion();
+				set++;
+				qcount=set;
+				nextQueston();
 			//count=0;
 			}
 			// qcount=1;
@@ -553,7 +557,7 @@ public class RapidFire2 extends JFrame {
 	}
 	void nextQueston()
 	{
-		qcount+=NO_OF_SET;
+		qcount=qcount+NO_OF_SET;
 		getQuestion();
 	}
 	MouseListener optClick=new MouseListener() {
@@ -644,7 +648,7 @@ public class RapidFire2 extends JFrame {
 		
 		public void mouseEntered(MouseEvent e) {
 			JLabel temp=((JLabel)e.getSource());
-			System.out.println(temp.getText());
+			//System.out.println(temp.getText());
 			switch (temp.getText().charAt(0))
 		{
 			case 'A':
@@ -683,10 +687,10 @@ public class RapidFire2 extends JFrame {
 		try {
 			if(choice==ans.charAt(0))
 			{
-				questionStatus[qcount]=new JLabel(qcount+"-"+choice+": Correct Answer");
-				questionStatus[qcount].setFont(new Font("Tahoma", Font.PLAIN, 18));
-				questionStatus[qcount].setForeground(Color.BLUE);
-				previousQustionPanel.add(questionStatus[qcount]);
+				questionStatus[questionno]=new JLabel(questionno+"-"+choice+": Correct Answer");
+				questionStatus[questionno].setFont(new Font("Tahoma", Font.PLAIN, 18));
+				questionStatus[questionno].setForeground(Color.BLUE);
+				previousQustionPanel.add(questionStatus[questionno]);
 				teamPoints+=10;
 				points_label.setText(teamPoints+"");
 				nextQueston();
@@ -696,9 +700,9 @@ public class RapidFire2 extends JFrame {
 			}
 			else
 			{
-				questionStatus[qcount]=new JLabel(qcount+"-"+choice+": Wrong Answer");
-				questionStatus[qcount].setForeground(Color.red);
-				previousQustionPanel.add(questionStatus[qcount]);
+				questionStatus[questionno]=new JLabel(questionno+"-"+choice+": Wrong Answer");
+				questionStatus[questionno].setForeground(Color.red);
+				previousQustionPanel.add(questionStatus[questionno]);
 				count=count-WRONG_ANSWER_DEDUCTION;
 				nextQueston();
 				wrongAnswer++;
@@ -709,9 +713,5 @@ public class RapidFire2 extends JFrame {
 		}
 	}
 	
-	void showInstruction()
-	{
-		
-		
-	}
+	
 }
