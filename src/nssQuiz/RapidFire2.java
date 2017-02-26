@@ -46,10 +46,23 @@ import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
 public class RapidFire2 extends JFrame {
-	final static int MAX_TIME=1200;
-	final int WRONG_ANSWER_DEDUCTION=40;
-	final int SKIP_DEDUCTION=20;
+	 static int MAX_TIME=1200;
+	  static int WRONG_ANSWER_DEDUCTION;
+	 static int  SKIP_DEDUCTION;
+	 static int NO_OF_SET;
+	 static int set; 
 	JPanel panel_10;
+
+	JLabel namelbl = new JLabel("Player Name:");
+
+	JLabel clglbl = new JLabel("COLLEGE:   ");
+
+	JLabel branchlbl = new JLabel("BRANCH:   ");
+	
+	JLabel semlbl = new JLabel("SEM:   "); 
+
+	JLabel moblbl = new JLabel("MOBILE :.   ");
+	
 	int qcount = 1;
 	int teamPoints=0;
 	String ans = null;
@@ -73,19 +86,11 @@ public class RapidFire2 extends JFrame {
 	 JLabel questionStatus[]=new JLabel[100];
 	 JLabel wrong_Answer_Label;
 	   JLabel questionSkippedLabel ;
-	public static void main(String... args) {
-		String temp;
-		System.out.println("rames");
-		do
-		{
-		temp=JOptionPane.showInputDialog("Enter Your/Team Name");} while(temp==null||temp.compareTo("")==0);
-		new RapidFire2(new Person("1")).setVisible(true);
-	}
 	
-	public RapidFire2(Person PlayerName) {
+	public RapidFire2() {
 		setUndecorated(true);
 		getRootPane().setWindowDecorationStyle(JRootPane.INFORMATION_DIALOG);
-		
+		count = MAX_TIME;
 		this.setExtendedState(MAXIMIZED_BOTH);
 		frame=this;
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\NSSPICS\\NssLogo.jpg"));
@@ -114,7 +119,7 @@ public class RapidFire2 extends JFrame {
 		panel_2.add(splitPaneQA);
 		splitPaneQA.setDividerLocation(1800);
 		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(Color.LIGHT_GRAY);
+		panel_4.setBackground(Color.RED);
 		splitPaneQA.setLeftComponent(panel_4);
 		GridBagLayout gbl_panel_4 = new GridBagLayout();
 		gbl_panel_4.columnWidths = new int[] { 0, 0 };
@@ -143,7 +148,7 @@ public class RapidFire2 extends JFrame {
 		textPane = new JTextPane();
 		textPane.setForeground(Color.WHITE);
 		textPane.setFont(new Font("Dialog", Font.PLAIN, 33));
-		textPane.setBackground(Color.BLACK);
+		textPane.setBackground(Color.LIGHT_GRAY);
 		//textPane.setBounds(panel_10.getBounds());
 		panel_10.add(textPane);
 		
@@ -170,7 +175,7 @@ public class RapidFire2 extends JFrame {
 
 		optALabel = new JLabel("A");
 		optALabel.addMouseListener(optClick);
-		optALabel.setForeground(Color.LIGHT_GRAY);
+		optALabel.setForeground(Color.BLACK);
 		optALabel.setHorizontalAlignment(SwingConstants.CENTER);
 		optALabel.setFont(new Font("Dialog", Font.BOLD, 29));
 		optALabel.setBackground(Color.GRAY);
@@ -183,7 +188,7 @@ public class RapidFire2 extends JFrame {
 
 		optBLabel = new JLabel("B");
 		optBLabel.addMouseListener(optClick);
-		optBLabel.setForeground(Color.LIGHT_GRAY);
+		optBLabel.setForeground(Color.BLACK);
 		optBLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		optBLabel.setFont(new Font("Dialog", Font.BOLD, 29));
 		optBpanel.add(optBLabel);
@@ -195,7 +200,7 @@ public class RapidFire2 extends JFrame {
 
 		optCLabel = new JLabel("C");
 		optCLabel.addMouseListener(optClick);
-		optCLabel.setForeground(Color.LIGHT_GRAY);
+		optCLabel.setForeground(Color.BLACK);
 		optCLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		optCLabel.setFont(new Font("Dialog", Font.BOLD, 29));
 		optCpanel.add(optCLabel);
@@ -207,7 +212,7 @@ public class RapidFire2 extends JFrame {
 
 		optDLabel = new JLabel("D");
 		optDLabel.addMouseListener(optClick);
-		optDLabel.setForeground(Color.LIGHT_GRAY);
+		optDLabel.setForeground(Color.BLACK);
 		optDLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		optDLabel.setFont(new Font("Dialog", Font.BOLD, 29));
 		optDpanel.add(optDLabel);
@@ -306,27 +311,22 @@ public class RapidFire2 extends JFrame {
 		gbc_panel_7.gridy = 1;
 		panel_1.add(panel_7, gbc_panel_7);
 		panel_7.setLayout(new GridLayout(0, 1, 0, 0));
+	
+		namelbl.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		namelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_7.add(namelbl);
+	
+		semlbl.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_7.add(semlbl);
 		
-		JLabel playerNameLabel = new JLabel("Player Name:");
-		playerNameLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		playerNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_7.add(playerNameLabel);
-		
-		JLabel lblNewLabel_3 = new JLabel("SEM:   ");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_7.add(lblNewLabel_3);
-		
-		JLabel lblNewLabel_4 = new JLabel("BRANCH:   ");
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_7.add(lblNewLabel_4);
-		
-		JLabel lblNewLabel_5 = new JLabel("COLLEGE:   ");
-		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_7.add(lblNewLabel_5);
-		
-		JLabel lblNewLabel_2 = new JLabel("MOBILE :.   ");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_7.add(lblNewLabel_2);
+		branchlbl.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_7.add(branchlbl);
+
+		clglbl.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_7.add(clglbl);
+
+		moblbl.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_7.add(moblbl);
 		
 		JPanel panel_6 = new JPanel();
 		GridBagConstraints gbc_panel_6 = new GridBagConstraints();
@@ -426,6 +426,8 @@ public class RapidFire2 extends JFrame {
 		skpBtn.setToolTipText("It will cost "+SKIP_DEDUCTION+"secs");
 
 		getDBConnection();
+		new RapidFireInstructions(frame).setVisible(true);
+		
 	}
 
 	Timer timeReal;
@@ -449,15 +451,15 @@ public class RapidFire2 extends JFrame {
 				optBLabel.setText("B: " + rs.getString(4));
 				optCLabel.setText("C: " + rs.getString(5));
 				optDLabel.setText("D: " + rs.getString(6));
-				textPane.setText(qcount + ": " + rs.getString(2));
+				textPane.setText((qcount-NO_OF_SET) + ": " + rs.getString(2));
 				ans = rs.getString(7);
 				// getQuestion();
 			}
 			else
 			{
-				JOptionPane.showMessageDialog( this, "No More Questions Available");
-				this.setTitle("No More Questions Available");
-			count=0;
+				qcount=1;
+				getQuestion();
+			//count=0;
 			}
 			// qcount=1;
 
@@ -551,7 +553,7 @@ public class RapidFire2 extends JFrame {
 	}
 	void nextQueston()
 	{
-		qcount++;
+		qcount+=NO_OF_SET;
 		getQuestion();
 	}
 	MouseListener optClick=new MouseListener() {
@@ -666,6 +668,17 @@ public class RapidFire2 extends JFrame {
 		
 		public void mouseClicked(MouseEvent e) {((JLabel)e.getSource()).setBackground(Color.lightGray);}
 	};
+	
+	public void setPersonDetails(Person person)
+	{
+		
+		namelbl.setText("Name: "+person.name);
+		branchlbl.setText("Branch:  "+person.branch);
+		semlbl.setText("Sem:   "+person.sem);
+		clglbl.setText("College:   "+person.college);
+		moblbl.setText("MOBILE: "+person.phNo);
+		
+	}
 	void checkAnswer(char choice) {
 		try {
 			if(choice==ans.charAt(0))
@@ -694,5 +707,11 @@ public class RapidFire2 extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	void showInstruction()
+	{
+		
+		
 	}
 }

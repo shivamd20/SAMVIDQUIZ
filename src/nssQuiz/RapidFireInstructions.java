@@ -13,8 +13,12 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import javax.swing.DropMode;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
  class RapidFireInstructions extends JFrame{
+	 
+	 RapidFire2 rd2;
 	
 	/**
 	 * 
@@ -23,10 +27,14 @@ import javax.swing.JButton;
 
 	public static void main(String ...args)
 	{
-		new RapidFireInstructions(new RapidFire2(new Person("1"))).setVisible(true);
+		//new RapidFireInstructions(new RapidFire2(new Person("1"))).setVisible(true);
 	}
 
 	public RapidFireInstructions(RapidFire2 RP2) {
+		
+		rd2=RP2;
+		
+		rd2.setAlwaysOnTop(false);
 		
 		RP2.setEnabled(false);
 		setTitle("RapidFire Instruction");
@@ -61,7 +69,10 @@ import javax.swing.JButton;
 		textPane.setLineWrap(true);
 		textPane.setDropMode(DropMode.INSERT);
 		textPane.setFont(new Font("Ravie", Font.PLAIN, 20));
-		textPane.setText("\r\n1. You have 20 mins(1200 secs) to answer the questions\r\n\r\n\r\n2. each Wrong Answer will Cost you\r\n 40 secs\r\n\r\n\r\n3. each skip will cost you 20 secs");
+		textPane.setText("\r\n1. You have "+RapidFire2.MAX_TIME/60+" mins to answer the questions\r\n\r\n\r\n"
+				+ "2. "
+				+ "each Wrong Answer will Cost you\r\n "+RapidFire2.WRONG_ANSWER_DEDUCTION+" secs\r\n\r\n\r\n"
+				+ "3. each skip will cost you "+RapidFire2.SKIP_DEDUCTION+" secs");
 		
 		panel_1.add(textPane);
 		
@@ -90,7 +101,15 @@ import javax.swing.JButton;
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblNewLabel_3);
 		
+		rFI.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		JButton lblNewLabel_1 = new JButton("DONE");
+		lblNewLabel_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rd2.setEnabled(true);
+				rFI.setVisible(false);
+				rd2.setAlwaysOnTop(true);
+			}
+		});
 		lblNewLabel_1.setBackground(Color.GREEN);
 		lblNewLabel_1.setBorder(null);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -103,4 +122,5 @@ import javax.swing.JButton;
 		panel_2.add(lblNewLabel_6);
 	}
 	
+	RapidFireInstructions rFI=this;
 }

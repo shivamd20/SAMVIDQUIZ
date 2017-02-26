@@ -17,21 +17,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 class Person{
-	
-	Person(String set)
-	{
-		this.set=set;
-	}
-	
-	String name="",branch="",college="",set="",phNo="";
+	String name="",branch="",college="",phNo="",sem="";
 }
 public class GetUserDetails extends JFrame implements ActionListener{
 	
-	Person person;
+	Person person=new Person();
 	
-	public GetUserDetails(Person person) {
-		
-		this.person=person;
+	public GetUserDetails() {
 		
 		this.setSize(565,445);
 		
@@ -94,6 +86,10 @@ public class GetUserDetails extends JFrame implements ActionListener{
 		
 		JButton submitButton = new JButton("submit");
 		panel_2.add(submitButton);
+		
+		submitButton.addActionListener(this);
+
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
 	private static final long serialVersionUID = 2404011542347307137L;
@@ -106,31 +102,32 @@ public class GetUserDetails extends JFrame implements ActionListener{
 	public static void main(String[] args) {
 		String set=JOptionPane.showInputDialog("enter set no");
 		
-		try{
-		int intset =Integer.parseInt(set);
-		}
-		catch(Exception e)
-		{
-			JOptionPane.showMessageDialog(null, "invalid set");
-			System.exit(0);
-		}
-		
-		Person person=new Person(set);
-		GetUserDetails gud= new GetUserDetails(person);
-		
+		Person person=new Person();
+		GetUserDetails gud= new GetUserDetails();
 		gud.setVisible(true);
-		
-		gud.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
 	}
 
+	GetUserDetails gud=this;
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		person.name=nameTxt.getText();
 		person.branch=branchComboBox.getText();
 		person.college=clgComboBox.getText();
-		person.phNo=clgComboBox.getText();
+		person.phNo=PhoneNo.getText();
+		person.sem=semComboBox.getText();
+		
+		RapidFire2 rp2=new RapidFire2();
+		
+		gud.setVisible(false);
+		
+		rp2.setPersonDetails(person);
+		
+
+		rp2.setVisible(true);
+		
+		gud.dispose();
 	}
 
 }
