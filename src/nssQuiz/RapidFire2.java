@@ -114,7 +114,7 @@ public class RapidFire2 extends JFrame {
 		panel_2.add(splitPaneQA);
 		splitPaneQA.setDividerLocation(1800);
 		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(Color.RED);
+		panel_4.setBackground(Color.LIGHT_GRAY);
 		splitPaneQA.setLeftComponent(panel_4);
 		GridBagLayout gbl_panel_4 = new GridBagLayout();
 		gbl_panel_4.columnWidths = new int[] { 0, 0 };
@@ -143,7 +143,7 @@ public class RapidFire2 extends JFrame {
 		textPane = new JTextPane();
 		textPane.setForeground(Color.WHITE);
 		textPane.setFont(new Font("Dialog", Font.PLAIN, 33));
-		textPane.setBackground(Color.BLUE);
+		textPane.setBackground(Color.BLACK);
 		//textPane.setBounds(panel_10.getBounds());
 		panel_10.add(textPane);
 		
@@ -170,7 +170,7 @@ public class RapidFire2 extends JFrame {
 
 		optALabel = new JLabel("A");
 		optALabel.addMouseListener(optClick);
-		optALabel.setForeground(Color.WHITE);
+		optALabel.setForeground(Color.LIGHT_GRAY);
 		optALabel.setHorizontalAlignment(SwingConstants.CENTER);
 		optALabel.setFont(new Font("Dialog", Font.BOLD, 29));
 		optALabel.setBackground(Color.GRAY);
@@ -183,7 +183,7 @@ public class RapidFire2 extends JFrame {
 
 		optBLabel = new JLabel("B");
 		optBLabel.addMouseListener(optClick);
-		optBLabel.setForeground(Color.WHITE);
+		optBLabel.setForeground(Color.LIGHT_GRAY);
 		optBLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		optBLabel.setFont(new Font("Dialog", Font.BOLD, 29));
 		optBpanel.add(optBLabel);
@@ -195,7 +195,7 @@ public class RapidFire2 extends JFrame {
 
 		optCLabel = new JLabel("C");
 		optCLabel.addMouseListener(optClick);
-		optCLabel.setForeground(Color.WHITE);
+		optCLabel.setForeground(Color.LIGHT_GRAY);
 		optCLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		optCLabel.setFont(new Font("Dialog", Font.BOLD, 29));
 		optCpanel.add(optCLabel);
@@ -207,7 +207,7 @@ public class RapidFire2 extends JFrame {
 
 		optDLabel = new JLabel("D");
 		optDLabel.addMouseListener(optClick);
-		optDLabel.setForeground(Color.WHITE);
+		optDLabel.setForeground(Color.LIGHT_GRAY);
 		optDLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		optDLabel.setFont(new Font("Dialog", Font.BOLD, 29));
 		optDpanel.add(optDLabel);
@@ -305,12 +305,28 @@ public class RapidFire2 extends JFrame {
 		gbc_panel_7.gridx = 0;
 		gbc_panel_7.gridy = 1;
 		panel_1.add(panel_7, gbc_panel_7);
-		panel_7.setLayout(new BorderLayout(0, 0));
+		panel_7.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JLabel playerNameLabel = new JLabel("Team:"+ PlayerName);
+		JLabel playerNameLabel = new JLabel("Player Name:");
 		playerNameLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		playerNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_7.add(playerNameLabel);
+		
+		JLabel lblNewLabel_3 = new JLabel("SEM:   ");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_7.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("BRANCH:   ");
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_7.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("COLLEGE:   ");
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_7.add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_2 = new JLabel("MOBILE :.   ");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_7.add(lblNewLabel_2);
 		
 		JPanel panel_6 = new JPanel();
 		GridBagConstraints gbc_panel_6 = new GridBagConstraints();
@@ -325,9 +341,9 @@ public class RapidFire2 extends JFrame {
 		panel_6.add(panel_12);
 		   GridBagLayout gbl_panel_12 = new GridBagLayout();
 		   gbl_panel_12.columnWidths = new int[]{365, 0};
-		   gbl_panel_12.rowHeights = new int[]{187, 0, 0, 0, 262, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		   gbl_panel_12.rowHeights = new int[]{187, 0, 0, 0, 262, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		   gbl_panel_12.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		   gbl_panel_12.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		   gbl_panel_12.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		   panel_12.setLayout(gbl_panel_12);
 		   
 		    points_label = new JLabel("0");
