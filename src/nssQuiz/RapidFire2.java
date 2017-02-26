@@ -587,6 +587,7 @@ public class RapidFire2 extends JFrame {
 					break;
 				default:
 					JOptionPane.showMessageDialog(frame, "wrong cchoice");	
+					
 			}
 		}
 
@@ -690,8 +691,6 @@ public class RapidFire2 extends JFrame {
 				wrongAnswer++;
 				wrong_Answer_Label.setText("Wrong Answers:    "+wrongAnswer);
 			}
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
