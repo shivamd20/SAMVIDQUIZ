@@ -5,59 +5,132 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 
 class Person{
-	String name,branch,college,set,
+	
+	Person(String set)
+	{
+		this.set=set;
+	}
+	
+	String name="",branch="",college="",set="",phNo="";
 }
-public class GetUserDetails extends JFrame{
-	public GetUserDetails() {
+public class GetUserDetails extends JFrame implements ActionListener{
+	
+	Person person;
+	
+	public GetUserDetails(Person person) {
+		
+		this.person=person;
+		
+		this.setSize(565,445);
 		
 		JPanel panel_1 = new JPanel();
 		getContentPane().add(panel_1, BorderLayout.NORTH);
+		
+		JLabel lblNewLabel = new JLabel("Fill Your Details");
+		panel_1.add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JLabel lblName = new JLabel("Name");
+		lblName.setBackground(SystemColor.activeCaption);
+		lblName.setFont(new Font("Dialog", Font.PLAIN, 19));
+		lblName.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblName);
 		
-		textField = new JTextField();
-		panel.add(textField);
-		textField.setColumns(10);
+		nameTxt = new JTextField();
+		panel.add(nameTxt);
+		nameTxt.setColumns(10);
 		
 		JLabel lblBranch = new JLabel("Branch");
+		lblBranch.setBackground(SystemColor.activeCaption);
+		lblBranch.setFont(new Font("Dialog", Font.PLAIN, 19));
+		lblBranch.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblBranch);
 		
-		JComboBox comboBox = new JComboBox();
-		panel.add(comboBox);
+		panel.add(branchComboBox);
 		
 		JLabel lblSem = new JLabel("SEM");
+		lblSem.setBackground(SystemColor.activeCaption);
+		lblSem.setFont(new Font("Dialog", Font.PLAIN, 19));
+		lblSem.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblSem);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		panel.add(comboBox_1);
+		panel.add(semComboBox);
 		
 		JLabel lblCollege = new JLabel("College");
+		lblCollege.setBackground(SystemColor.activeCaption);
+		lblCollege.setFont(new Font("Dialog", Font.PLAIN, 19));
+		lblCollege.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblCollege);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		panel.add(comboBox_2);
+		panel.add(clgComboBox);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		panel.add(lblNewLabel);
+		JLabel lblPhno = new JLabel("PhoneNo");
+		lblPhno.setBackground(SystemColor.activeCaption);
+		lblPhno.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPhno.setFont(new Font("Dialog", Font.PLAIN, 19));
+		panel.add(lblPhno);
+		
+		PhoneNo = new JTextField();
+		panel.add(PhoneNo);
+		PhoneNo.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
 		getContentPane().add(panel_2, BorderLayout.SOUTH);
+		
+		JButton submitButton = new JButton("submit");
+		panel_2.add(submitButton);
 	}
 
 	private static final long serialVersionUID = 2404011542347307137L;
-	private JTextField textField;
-
+	private JTextField nameTxt;
+	private JTextField PhoneNo;
+	private JTextField branchComboBox = new JTextField();
+	private JTextField clgComboBox =  new JTextField();
+	private JTextField semComboBox =  new JTextField();
+	
 	public static void main(String[] args) {
+		String set=JOptionPane.showInputDialog("enter set no");
+		
+		try{
+		int intset =Integer.parseInt(set);
+		}
+		catch(Exception e)
+		{
+			JOptionPane.showMessageDialog(null, "invalid set");
+			System.exit(0);
+		}
+		
+		Person person=new Person(set);
+		GetUserDetails gud= new GetUserDetails(person);
+		
+		gud.setVisible(true);
+		
+		gud.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		person.name=nameTxt.getText();
+		person.branch=branchComboBox.getText();
+		person.college=clgComboBox.getText();
+		person.phNo=clgComboBox.getText();
 	}
 
 }

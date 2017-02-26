@@ -79,10 +79,10 @@ public class RapidFire2 extends JFrame {
 		do
 		{
 		temp=JOptionPane.showInputDialog("Enter Your/Team Name");} while(temp==null||temp.compareTo("")==0);
-		new RapidFire2(temp).setVisible(true);
+		new RapidFire2(new Person("1")).setVisible(true);
 	}
 	
-	public RapidFire2(String PlayerName) {
+	public RapidFire2(Person PlayerName) {
 		setUndecorated(true);
 		getRootPane().setWindowDecorationStyle(JRootPane.INFORMATION_DIALOG);
 		

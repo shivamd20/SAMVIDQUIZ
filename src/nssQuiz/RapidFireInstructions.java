@@ -23,7 +23,7 @@ import javax.swing.JButton;
 
 	public static void main(String ...args)
 	{
-		new RapidFireInstructions(new RapidFire2("")).setVisible(true);
+		new RapidFireInstructions(new RapidFire2(new Person("1"))).setVisible(true);
 	}
 
 	public RapidFireInstructions(RapidFire2 RP2) {
@@ -96,7 +96,7 @@ import javax.swing.JButton;
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_6 = new JLabel("Vth Sem");
+		JLabel lblNewLabel_6 = new JLabel("VIth Sem");
 		lblNewLabel_6.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 15));
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6.setForeground(Color.BLUE);
